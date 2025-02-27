@@ -31,7 +31,7 @@ public class Main {
                     opcion = scanner.nextInt();
                     System.out.println("PRODUCTOS DISPONIBLES");
                     for (int i = 0; i < productos.length; i++){
-                        System.out.println((i+1) + ". " + productos[i] ": $" + precios[i]);
+                        System.out.println((i+1) + ". " + productos[i] + ": $" + precios[i]);
                     }
                     break;
 
@@ -51,6 +51,16 @@ public class Main {
                     if (dineroIngresado <= 0){
                         System.out.println("Primero debe ingresar dinero. ");
                         break;
+                    }
+                    System.out.println("Seleccione minimo 5 productos");
+                    int productosseleccionados = 0;
+
+                    while (productosseleccionados >= 5){
+                        System.out.println("Productos disponibles: ");
+                        for(int i = 0; i < productos.length; i++){
+                            System.out.println((i+1) + ". " + productos[i] + "$ " + precios[i]);
+                        }
+
                     }
 
 
