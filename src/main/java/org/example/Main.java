@@ -1,77 +1,48 @@
 package org.example;
 
-import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
+        int victoriasBot1 = 0;
+        int victoriasBot2 = 0;
+        int ronda = 1;
+        Random random = new Random();
 
-        String[] productos = {"Cheetos", "Coca-cola", "Galletas", "Chocolatina", "Agua"};
-        int[] precios = {2000, 3000, 2500, 3500, 1500 };
+        System.out.println("1. piedra\n2.Papel \n3.Tijera ");
+        while (victoriasBot1 < 2 && victoriasBot2 < 2) {
+            System.out.println("Ronda " + ronda + "---");
+            int op1 = random.nextInt(3) + 1;
+            int op2 = random.nextInt(3) + 1;
 
-        Scanner scanner = new Scanner(System.in);
-        int totalCompra = 0;
-        int dineroIngresado = 0;
-        boolean sesionActiva = true;
-        int opcion = 0;
+            System.out.println("Bot1 elige: " + convertiraOpcion(op1));
+            System.out.println("Bot2 elige: " + convertiraOpcion(op2));
 
-        while (sesionActiva){
-            System.out.println("MAQUINA EXPENDEDORA");
-            System.out.println("1. Ver productos disponibles");
-            System.out.println("2. Ingresar dinero");
-            System.out.println("3. Seleccionar productos");
-            System.out.println("4. Terminar compra");
-            System.out.println("5.Salir. ");
-            System.out.println("Escoja un producto: ");
-
-            opcion = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (opcion){
-                case 1:
-                    opcion = scanner.nextInt();
-                    System.out.println("PRODUCTOS DISPONIBLES");
-                    for (int i = 0; i < productos.length; i++){
-                        System.out.println((i+1) + ". " + productos[i] + ": $" + precios[i]);
-                    }
-                    break;
-
-                case 2:
-                    System.out.println("Ingrese la cantidad de dinero: $ ");
-                    int cantidad = scanner.nextInt();
-                    scanner.nextLine();
-
-                    if (cantidad > 0){
-                        dineroIngresado += cantidad;
-                        System.out.println("Dinero total ingresado: $ " + dineroIngresado);
-                    } else {
-                        System.out.println("Ingrese una cantidad valida");
-                    }
-                    break;
-                case 3:
-                    if (dineroIngresado <= 0){
-                        System.out.println("Primero debe ingresar dinero. ");
-                        break;
-                    }
-                    System.out.println("Seleccione los productos que desea comprar o 0 en caso de terminar");
-                    boolean seguircomprando = true;
-
-                    while (seguircomprando){
-                        System.out.println("productos disponibles");
-                        for (int i = 0; i < productos.length; i++){
-                            System.out.println((i+1) + ". " + productos[i] + ": $" + precios[i]);
-                        }
-
-
-                    }
-
-
+            if (op1 == op2) {
+                System.out.println("Ronda empatada");
+            } else if ((op1 == 1 && op2 == 2) || (op1 == 2 && op2 == 1) || (op1 == 3 && op2 == 2)) {
+                System.out.println("Bot1 gana esta ronda");
+                victoriasBot1++;
+            } else {
+                System.out.println("Bot2 gana esta ronda");
+                victoriasBot2++;
             }
-
-
+            ronda++;
         }
-
-
-
-
+        System.out.println("Resultado final");
+        if (victoriasBot1 > victoriasBot2) {
+            System.out.println("El bot1 gana el juego");
+        } else {
+            System.out.println("El bot2 gana el juego");
+        }
+    }
+    public static String convertiraOpcion(int numero){
+        if (numero == 1) {
+            return "Piedra";
+        } else if (numero == 2) {
+            return"Papel";
+        } else {
+            return "Tijera";
+        }
     }
 }
