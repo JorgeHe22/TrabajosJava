@@ -52,14 +52,15 @@ public class Main {
                         System.out.println("Primero debe ingresar dinero. ");
                         break;
                     }
-                    System.out.println("Seleccione minimo 5 productos");
-                    int productosseleccionados = 0;
+                    System.out.println("Seleccione los productos que desea comprar o 0 en caso de terminar");
+                    boolean seguircomprando = true;
 
-                    while (productosseleccionados >= 5){
-                        System.out.println("Productos disponibles: ");
-                        for(int i = 0; i < productos.length; i++){
-                            System.out.println((i+1) + ". " + productos[i] + "$ " + precios[i]);
+                    while (seguircomprando){
+                        System.out.println("productos disponibles");
+                        for (int i = 0; i < productos.length; i++){
+                            System.out.println((i+1) + ". " + productos[i] + ": $" + precios[i]);
                         }
+
 
                     }
 
